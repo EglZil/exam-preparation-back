@@ -1,0 +1,61 @@
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+    date-format: "yyyy-MM-dd HH:mm"
+  h2:
+    console:
+      enabled: true
+      path: /h2-ui
+  jpa:
+    hibernate:
+      #     ddl-auto: none
+      #      ddl-auto: drop-and-create
+      ddl-auto: update
+    generate-ddl: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        show_sql: true
+        format_sql: true
+  datasource:
+    #      url: jdbc:h2:tcp://localhost/~/test;
+    #url: jdbc:h2:tcp://localhost/~/test;SCHEMA=TECH_SCHEMA
+    url: jdbc:h2:mem:test
+      #    INIT=CREATE SCHEMA IF NOT EXISTS TECH_SCHEMA
+      #    url: jdbc:h2:file:/data/test
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+#app:
+#  jwt:
+#    # Signing key for HS512 algorithm
+#    # In http://www.allkeysgenerator.com/ you can generate all kinds of keys
+#    secret: secret
+#    expiration:
+#      minutes: 10
+#    cookie:
+#      name: vardas
+
+logging:
+  level:
+    lt:
+      techin: DEBUG
+    org:
+      springframework: INFO
+      #      springframework: DEBUG
+      #        jdbc:
+      #          core:
+      #            JdbcTemplate: DEBUG
+      #            StatementCreatorUtils: DEBUG
+      hibernate:
+        SQL: DEBUG
+        type: TRACE
+      type:
+        descriptor:
+          sql:
+            BasicBinder: DEBUG
